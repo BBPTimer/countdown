@@ -1,0 +1,22 @@
+@font-face {
+  font-family: regulator-nova-bold;
+  src: url(Regulator_Nova_Bold.otf);
+}
+
+body {
+    font-family: regulator-nova-bold;
+    text-align: center;
+}
+
+img {
+    margin: 2vw 2vw 0vw;
+}
+
+p {
+    font-size: 12vw;
+}
+
+footer {
+    color: rgb(62, 81, 100);
+    font-size: 4vw;
+}
