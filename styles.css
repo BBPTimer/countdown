@@ -32,6 +32,7 @@ p {
 footer {
     color: rgb(62, 81, 100);
     font-size: 4vw;
+    padding: 1vw;
 }
 
 input, button {
