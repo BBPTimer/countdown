@@ -9,11 +9,17 @@
     <script src="countdown.js" defer></script>
 </head>
 <body>
-    <header><img /></header>
+    <header><img id="logo" /></header>
     <main>
-        <p>"liftoff" in...</p>
+        <p id="static-text">"liftoff" in...</p>
         <p id="countdown"></p>
     </main>
-    <footer>&#128640; &#128640; &#128640; &copy; 2025 greg weseloh &#128640; &#128640; &#128640;</footer>
+    <footer>
+        &#128640; End of last class: 
+        <input type="date" id="graduation-date" />
+        <input type="time" id="graduation-time" />
+        <button id="reset">Reset</button> &#128640;
+        <br />&#128640; &#128640; &#128640; &copy; 2025 greg weseloh &#128640; &#128640; &#128640;
+    </footer>
 </body>
 </html>

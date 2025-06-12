@@ -1,11 +1,57 @@
-// Set the date we're counting down to
-const countDownDate = new Date("Nov 20, 2025 20:30:00").getTime();
+// Translate date/time to JS-friendly format
+function setCountDownDate() {
+    countDownDate = new Date(`${graduationDate.value} ${graduationTime.value}`).getTime();
+}
+
+// Initialize countDownDate variable
+let countDownDate = null;
+
+// Get HTML elements
+const img = document.getElementsByTagName("img");
 const countdown = document.getElementById("countdown");
 const pTag = document.getElementsByTagName("p")
+const graduationDate = document.getElementById("graduation-date");
+const graduationTime = document.getElementById("graduation-time");
+const reset = document.getElementById("reset");
 const footer = document.getElementsByTagName("footer");
-const img = document.getElementsByTagName("img");
 
-//Initialize colors and logo
+// Get stored date
+if (localStorage.getItem("graduationDate") === null) {
+    graduationDate.value = "2025-11-20";
+} else {
+    graduationDate.value = localStorage.getItem("graduationDate");
+}
+
+// Get stored time
+if (localStorage.getItem("graduationTime") === null) {
+    graduationTime.value = "20:30";
+} else {
+    graduationTime.value = localStorage.getItem("graduationTime");
+}
+
+// Set the date we're counting down to
+setCountDownDate();
+
+// When date changes, update countDownDate and save date to local storage
+graduationDate.addEventListener("change", () => {
+    setCountDownDate()
+    localStorage.setItem("graduationDate", graduationDate.value);
+});
+
+// When time changes, update countDownDate and save date to local storage
+graduationTime.addEventListener("change", () => {
+    setCountDownDate()
+    localStorage.setItem("graduationTime", graduationTime.value);
+});
+
+// When the user clicks the reset button, remove local storage items and reload the page
+reset.addEventListener("click", () => {
+    localStorage.removeItem("graduationDate");
+    localStorage.removeItem("graduationTime");
+    location.reload();
+});
+
+// Initial styling
 document.body.style.backgroundColor === "rgb(62, 81, 100)";
 pTag[0].style.color = "#FFFFFF";
 pTag[1].style.color = "#FFFFFF";
@@ -13,7 +59,7 @@ footer[0].style.backgroundColor = "#FFFFFF";
 img[0].src = "images/logo white.svg"
 img[0].id = "shake";
 
-//https://www.w3schools.com/howto/howto_js_countdown.asp
+// https://www.w3schools.com/howto/howto_js_countdown.asp
 
 // Update the count down every 1 second
 let x = setInterval(function() {
