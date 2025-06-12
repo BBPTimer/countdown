@@ -13,6 +13,8 @@ footer[0].style.backgroundColor = "#FFFFFF";
 img[0].src = "images/logo white.svg"
 img[0].id = "shake";
 
+//https://www.w3schools.com/howto/howto_js_countdown.asp
+
 // Update the count down every 1 second
 let x = setInterval(function() {
     // Get today's date and time
