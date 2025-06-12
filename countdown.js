@@ -5,35 +5,16 @@ const pTag = document.getElementsByTagName("p")
 const footer = document.getElementsByTagName("footer");
 const img = document.getElementsByTagName("img");
 
+//Initialize colors and logo
 document.body.style.backgroundColor === "rgb(62, 81, 100)";
 pTag[0].style.color = "#FFFFFF";
 pTag[1].style.color = "#FFFFFF";
 footer[0].style.backgroundColor = "#FFFFFF";
 img[0].src = "images/logo white.svg"
-
-let colorInterval = 1;
+img[0].id = "shake";
 
 // Update the count down every 1 second
 let x = setInterval(function() {
-    
-    if (colorInterval === 1) {
-        if (document.body.style.backgroundColor === "rgb(62, 81, 100)") {
-            document.body.style.backgroundColor = "#FFFFFF";
-            pTag[0].style.color = "rgb(62, 81, 100)";
-            pTag[1].style.color = "rgb(62, 81, 100)";
-            img[0].src = "images/logo blue.svg";
-        } else {
-            document.body.style.backgroundColor = "rgb(62, 81, 100)";
-            pTag[0].style.color = "#FFFFFF";
-            pTag[1].style.color = "#FFFFFF";
-            footer[0].style.backgroundColor = "#FFFFFF";
-            img[0].src = "images/logo white.svg"
-        }
-        colorInterval = 2;
-    } else {
-        colorInterval -= 1;
-    }
-
     // Get today's date and time
     let now = new Date().getTime();
 
@@ -54,5 +35,26 @@ let x = setInterval(function() {
     if (distance < 0) {
         clearInterval(x);
         countdown.innerHTML = "We did it!";
+    }
+
+    //Toggle logo animation
+    if (img[0].id === "shake") {
+        img[0].id = "slide-up";
+    } else {
+        img[0].id = "shake";
+    }
+
+    //Toggle page colors
+    if (document.body.style.backgroundColor === "rgb(62, 81, 100)") {
+        document.body.style.backgroundColor = "#FFFFFF";
+        pTag[0].style.color = "rgb(62, 81, 100)";
+        pTag[1].style.color = "rgb(62, 81, 100)";
+        img[0].src = "images/logo blue.svg";
+    } else {
+    document.body.style.backgroundColor = "rgb(62, 81, 100)";
+        pTag[0].style.color = "#FFFFFF";
+        pTag[1].style.color = "#FFFFFF";
+        footer[0].style.backgroundColor = "#FFFFFF";
+        img[0].src = "images/logo white.svg"
     }
 }, 1000);
