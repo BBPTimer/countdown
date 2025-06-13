@@ -16,39 +16,33 @@ const reset = document.getElementById("reset");
 const footer = document.getElementsByTagName("footer");
 
 // Get stored date
-if (localStorage.getItem("graduationDate") === null) {
-    graduationDate.value = "2025-11-20";
-} else {
-    graduationDate.value = localStorage.getItem("graduationDate");
-}
+graduationDate.value = localStorage.getItem("graduationDate") || "2025-11-20";
 
 // Get stored time
-if (localStorage.getItem("graduationTime") === null) {
-    graduationTime.value = "20:30";
-} else {
-    graduationTime.value = localStorage.getItem("graduationTime");
-}
+graduationTime.value = localStorage.getItem("graduationTime") || "20:30";
 
 // Set the date we're counting down to
 setCountDownDate();
 
 // When date changes, update countDownDate and save date to local storage
 graduationDate.addEventListener("change", () => {
-    setCountDownDate()
+    setCountDownDate();
     localStorage.setItem("graduationDate", graduationDate.value);
 });
 
 // When time changes, update countDownDate and save date to local storage
 graduationTime.addEventListener("change", () => {
-    setCountDownDate()
+    setCountDownDate();
     localStorage.setItem("graduationTime", graduationTime.value);
 });
 
 // When the user clicks the reset button, remove local storage items and reload the page
 reset.addEventListener("click", () => {
-    localStorage.removeItem("graduationDate");
-    localStorage.removeItem("graduationTime");
-    location.reload();
+    if(confirm("Are you sure you want to reset?")) {
+        localStorage.removeItem("graduationDate");
+        localStorage.removeItem("graduationTime");
+        location.reload();
+    }
 });
 
 // Initial styling
