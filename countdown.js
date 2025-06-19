@@ -3,16 +3,29 @@ function setCountDownDate() {
     countDownDate = new Date(`${graduationDate.value} ${graduationTime.value}`).getTime();
 }
 
-// Initialize countDownDate variable
-let countDownDate = null;
+function setColorScheme(bgColor) {
+    if(bgColor === "Blue" || bgColor === "Alt") {
+        document.body.style.backgroundColor = "rgb(62, 81, 100)";
+        pTag[0].style.color = "#FFFFFF";
+        pTag[1].style.color = "#FFFFFF";
+        img[0].src = "images/logo white.svg"
+    }
+    if(bgColor === "White") {
+        document.body.style.backgroundColor = "#FFFFFF";
+        pTag[0].style.color = "rgb(62, 81, 100)";
+        pTag[1].style.color = "rgb(62, 81, 100)";
+        img[0].src = "images/logo blue.svg";
+    }
+}
 
 // Get HTML elements
 const img = document.getElementsByTagName("img");
-const countdown = document.getElementById("countdown");
+const countdownTag = document.getElementById("countdown");
 const pTag = document.getElementsByTagName("p")
 const graduationDate = document.getElementById("graduation-date");
 const graduationTime = document.getElementById("graduation-time");
 const reset = document.getElementById("reset");
+const bgColorSelect = document.getElementById("bg-color");
 const footer = document.getElementsByTagName("footer");
 
 // Get stored date
@@ -21,7 +34,8 @@ graduationDate.value = localStorage.getItem("graduationDate") || "2025-11-20";
 // Get stored time
 graduationTime.value = localStorage.getItem("graduationTime") || "20:30";
 
-// Set the date we're counting down to
+// Initialize countdown date
+let countDownDate = null;
 setCountDownDate();
 
 // When date changes, update countDownDate and save date to local storage
@@ -45,18 +59,22 @@ reset.addEventListener("click", () => {
     }
 });
 
-// Initial styling
-document.body.style.backgroundColor === "rgb(62, 81, 100)";
-pTag[0].style.color = "#FFFFFF";
-pTag[1].style.color = "#FFFFFF";
-footer[0].style.backgroundColor = "#FFFFFF";
-img[0].src = "images/logo white.svg"
+// Initialize background color
+let initialBgColor = localStorage.getItem("bgColor") || "Alt";
+document.getElementById(initialBgColor).selected = true;
+setColorScheme(initialBgColor);
+
+bgColorSelect.addEventListener("change", () => {
+    setColorScheme(bgColorSelect.value);
+    localStorage.setItem("bgColor", bgColorSelect.value);
+});
+
+// Initialize animation
 img[0].id = "shake";
 
 // https://www.w3schools.com/howto/howto_js_countdown.asp
+function countdownFunction() {
 
-// Update the count down every 1 second
-let x = setInterval(function() {
     // Get today's date and time
     let now = new Date().getTime();
 
@@ -70,33 +88,20 @@ let x = setInterval(function() {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    countdown.innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
+    countdownTag.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
     // If the count down is finished, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        countdown.innerHTML = "We did it!";
-    }
+    distance < 0 && (countdownTag.innerHTML = "we did it!");
 
     //Toggle logo animation
-    if (img[0].id === "shake") {
-        img[0].id = "slide-up";
-    } else {
-        img[0].id = "shake";
-    }
+    img[0].id === "shake" ? img[0].id = "slide-up" : img[0].id = "shake";
 
     //Toggle page colors
-    if (document.body.style.backgroundColor === "rgb(62, 81, 100)") {
-        document.body.style.backgroundColor = "#FFFFFF";
-        pTag[0].style.color = "rgb(62, 81, 100)";
-        pTag[1].style.color = "rgb(62, 81, 100)";
-        img[0].src = "images/logo blue.svg";
-    } else {
-    document.body.style.backgroundColor = "rgb(62, 81, 100)";
-        pTag[0].style.color = "#FFFFFF";
-        pTag[1].style.color = "#FFFFFF";
-        footer[0].style.backgroundColor = "#FFFFFF";
-        img[0].src = "images/logo white.svg"
-    }
-}, 1000);
+    bgColorSelect.value === "Alt" && (document.body.style.backgroundColor === "rgb(62, 81, 100)" ? setColorScheme("White") : setColorScheme("Blue"));
+
+}
+
+countdownFunction();
+
+// Update the count down every 1 second
+setInterval(countdownFunction, 1000);
