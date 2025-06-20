@@ -22,10 +22,13 @@ function setColorScheme(bgColor) {
 const img = document.getElementsByTagName("img");
 const countdownTag = document.getElementById("countdown");
 const pTag = document.getElementsByTagName("p")
+const optionsButton = document.getElementById("options-button");
+const options = document.getElementById("options");
 const graduationDate = document.getElementById("graduation-date");
 const graduationTime = document.getElementById("graduation-time");
 const reset = document.getElementById("reset");
 const bgColorSelect = document.getElementById("bg-color");
+const logoSelect = document.getElementById("logo-select");
 const footer = document.getElementsByTagName("footer");
 
 // Get stored date
@@ -59,6 +62,11 @@ reset.addEventListener("click", () => {
     }
 });
 
+// Options button event listener
+optionsButton.addEventListener("click", () => {
+    options.style.display === "block" ? options.style.display = "none" : options.style.display = "block";
+})
+
 // Initialize background color
 let initialBgColor = localStorage.getItem("bgColor") || "Alt";
 document.getElementById(initialBgColor).selected = true;
@@ -70,7 +78,12 @@ bgColorSelect.addEventListener("change", () => {
 });
 
 // Initialize animation
-img[0].id = "shake";
+let initialLogo = localStorage.getItem("logo") || "Animated";
+document.getElementById(initialLogo).selected = true;
+
+logoSelect.addEventListener("change", () => {
+    localStorage.setItem("logo", logoSelect.value);
+});
 
 // https://www.w3schools.com/howto/howto_js_countdown.asp
 function countdownFunction() {
@@ -91,10 +104,10 @@ function countdownFunction() {
     countdownTag.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
     // If the count down is finished, write some text
-    distance < 0 && (countdownTag.innerHTML = "we did it!");
+    distance < 0 && (countdownTag.innerHTML = "We did it!");
 
     //Toggle logo animation
-    img[0].id === "shake" ? img[0].id = "slide-up" : img[0].id = "shake";
+    logoSelect.value === "Animated" ? (img[0].id === "shake" ? img[0].id = "slide-up" : img[0].id = "shake") : img[0].removeAttribute("id");
 
     //Toggle page colors
     bgColorSelect.value === "Alt" && (document.body.style.backgroundColor === "rgb(62, 81, 100)" ? setColorScheme("White") : setColorScheme("Blue"));

@@ -29,7 +29,15 @@ p {
     font-size: 12vw;
 }
 
-footer {
+#options-button {
+    margin: 1vw;
+}
+
+#options {
+    display: none;
+}
+
+#options, footer {
     background-color: #FFFFFF;
     color: rgb(62, 81, 100);
     font-size: 4vw;

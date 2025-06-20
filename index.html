@@ -9,23 +9,31 @@
     <script src="countdown.js" defer></script>
 </head>
 <body>
-    <header><img id="logo" /></header>
+    <header><img /></header>
     <main>
-        <p id="static-text">"liftoff" in...</p>
+        <p id="static-text">"Liftoff" in...</p>
         <p id="countdown"></p>
+        <button id="options-button">Options</button>
+        <div id="options">
+            End of last class: 
+            <input type="date" id="graduation-date" />
+            <input type="time" id="graduation-time" />
+            <button id="reset">Reset</button>
+            <br /><label for="bg-color">Background: </label>
+            <select name="bg-color" id="bg-color">
+                <option id = "Alt" value="Alt">Alternating</option>
+                <option id = "Blue" value="Blue">Blue</option>
+                <option id = "White" value="White">White</option>
+            </select>
+            <br /><label for="logo-select">Logo: </label>
+            <select name="logo-select" id="logo-select">
+                <option id = "Animated" value="Animated">Animated</option>
+                <option id = "Static" value="Static">Static</option>
+            </select>
+        </div>
     </main>
     <footer>
-        End of last class: 
-        <input type="date" id="graduation-date" />
-        <input type="time" id="graduation-time" />
-        <button id="reset">Reset</button>
-        <br /><label for="bg-color">Background: </label>
-        <select name="bg-color" id="bg-color">
-            <option id = "Alt" value="Alt">Alternating</option>
-            <option id = "Blue" value="Blue">Blue</option>
-            <option id = "White" value="White">White</option>
-        </select>
-        <br />&#128640; &#128640; &#128640; &copy; 2025 greg weseloh &#128640; &#128640; &#128640;
+        &#128640; &#128640; &#128640; &copy; 2025 Greg Weseloh &#128640; &#128640; &#128640;
     </footer>
 </body>
 </html>
