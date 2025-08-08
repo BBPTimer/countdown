@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LaunchCode "Graduation" Countdown!</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="countdown.js" defer></script>
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header><img /></header>
     <main>
-        <p id="static-text">"Liftoff" in...</p>
-        <p id="countdown"></p>
-        <button id="options-button">Options</button>
-        <div id="options">
-            End of last class: 
-            <input type="date" id="graduation-date" />
-            <input type="time" id="graduation-time" />
-            <button id="reset">Reset</button>
-            <br /><label for="bg-color">Background: </label>
-            <select name="bg-color" id="bg-color">
-                <option id = "Alt" value="Alt">Alternating</option>
-                <option id = "Blue" value="Blue">Blue</option>
-                <option id = "White" value="White">White</option>
-            </select>
-            <br /><label for="logo-select">Logo: </label>
-            <select name="logo-select" id="logo-select">
-                <option id = "Animated" value="Animated">Animated</option>
-                <option id = "Static" value="Static">Static</option>
-            </select>
-        </div>
+      <p id="static-text">"Liftoff" in...</p>
+      <p id="countdown"></p>
+      <button id="options-button">Options</button>
+      <div id="options">
+        End of last class:
+        <input type="date" id="graduation-date" />
+        <input type="time" id="graduation-time" />
+        <button id="reset">Reset</button>
+        <br /><label for="bg-color">Background: </label>
+        <select name="bg-color" id="bg-color">
+          <option id="Alt" value="Alt">Alternating</option>
+          <option id="Blue" value="Blue">Blue</option>
+          <option id="White" value="White">White</option>
+        </select>
+        <br /><label for="logo-select">Logo: </label>
+        <select name="logo-select" id="logo-select">
+          <option id="Animated" value="Animated">Animated</option>
+          <option id="Static" value="Static">Static</option>
+        </select>
+      </div>
     </main>
     <footer>
-        &#128640; &#128640; &#128640; &copy; 2025 Greg Weseloh &#128640; &#128640; &#128640;
+      &#128640; &#128640; &#128640; &copy; 2025 Greg Weseloh &#128640; &#128640;
+      &#128640;
     </footer>
-</body>
+  </body>
 </html>
